@@ -37,3 +37,29 @@ print(dfclean.median())
 #Desviación estandar
 print("\n Desviaciónn estandar")
 print(dfclean.std())
+
+#Selecting parts of a Data Frame 
+# Indexing: Select single columns using a column(temperature) Returns a Series
+# example dfclean[temperature]
+# Select multiple columns using columm names Must specify a list of column names
+#dfclean[[Temperature, Rainfall]]
+# Illoc and Loc
+# Select a certain row number using iloc: print(Third row \n , dfclean.iloc[2])
+#Select a certain row using a certain value
+# print(Third row \n, dfindexed.loc[March]);
+#Imprime rainfall y su promedio para los primeros tres meses
+rainfall = dfclean['Rainfall'][0:3]
+print(rainfall, "\n")
+print("Mean Rainfall: ", rainfall.mean(),"\n")
+
+print("\n Solo la temperatura y datos de rainfall")
+
+dfTempRain = (dfclean[['Temperature','Rainfall']])
+print(dfTempRain)
+print("mean \n",dfTempRain.mean())
+#Loc function
+index = dfclean['Month']
+dfindexed = dfclean.set_index(index)
+
+#Re quiere propiedad indexada al data frama
+print("Encuentra los campos con el valor \n",dfindexed.loc['March'])
