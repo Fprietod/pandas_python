@@ -12,5 +12,12 @@ data = {'Month':pd.Series(['January','February', 'March','April',
 #df = pd.DataFrame(data)
 #dfc = pd.read_csv(r'./rain.csv')
 dfj = pd.read_json(r'./rain.json')
-print("Nuestro data Frame")
-print(dfj, "\n")
+#print("Nuestro data Frame")
+#print(dfj, "\n")
+#Encontrar los valores faltantes con ceors
+dfzeros = dfj.fillna(0)
+#print("nuestros valores sin ceros son: \n ",dfzeros)
+
+#Remover los campos con los valores perdidos con zeros
+dfclean = dfj.dropna(0)
+print("nuestros valores sin el cero son: \n",dfclean)
