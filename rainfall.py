@@ -28,3 +28,12 @@ for index, row in dfj.iterrows():
     if any(row.isnull()):
         count = count + 1
 print("\n Numero de campos con nulos es " + str(count))
+#Data analysis
+print("Mean: ")
+print(dfclean.mean())
+# Median
+print("\n ","Median")
+print(dfclean.median())
+#Desviación estandar
+print("\n Desviaciónn estandar")
+print(dfclean.std())
