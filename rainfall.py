@@ -21,3 +21,10 @@ dfzeros = dfj.fillna(0)
 #Remover los campos con los valores perdidos con zeros
 dfclean = dfj.dropna(0)
 print("nuestros valores sin el cero son: \n",dfclean)
+
+#Crear una cuenta de todos los campos que contiene vacio
+count = 0
+for index, row in dfj.iterrows():
+    if any(row.isnull()):
+        count = count + 1
+print("\n Numero de campos con nulos es " + str(count))
