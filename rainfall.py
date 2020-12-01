@@ -9,6 +9,8 @@ data = {'Month':pd.Series(['January','February', 'March','April',
 }
 
 #Creamos el DataFrame usando datos estaticos
-df = pd.DataFrame(data)
+#df = pd.DataFrame(data)
+#dfc = pd.read_csv(r'./rain.csv')
+dfj = pd.read_json(r'./rain.json')
 print("Nuestro data Frame")
-print(df, "\n")
+print(dfj, "\n")
