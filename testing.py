@@ -28,3 +28,12 @@ print(song)
 heights = [['Jenny', 61], ['Alexus', 70], ['Sam', 67], ['Grace', 64],['Vik',68]]
 
 ages = [['Aaron',15],['Dhruti',16]]
+/#If we wanted to create a list of lists that paired each name with a height
+#we could use the command zip. zip takes two (or more) lists as inputs and returns an object that contains a list of pairs.
+#
+names = ['Jenny', 'Alexus', 'Sam', 'Grace']
+dogs_names = ['Elphonse', 'Dr. Doggy DDS', 'Carter', 'Ralph']
+names_and_dogs_names = zip(names,dogs_names)
+#To print it´s neccesary convert the object into a list
+print(list(name_and_dogs_names))
+#We can add a single element to a list using .append(). 
