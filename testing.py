@@ -57,3 +57,10 @@ my_range2 = range(2, 9, 2)
 my_range3 = range(1, 100, 10)
 >>> print(list(my_range3))
 [1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
+#Other example
+first_names = ['Ainsley', 'Ben', 'Chani', 'Depak']
+age = []
+age.append(42)
+all_ages = [32, 41, 29] + age
+name_and_age = zip(first_names, all_ages)
+ids = range(4)
