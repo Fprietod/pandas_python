@@ -53,3 +53,7 @@ my_range2 = range(2, 9, 2)
 >>> print(list(my_range2))
 [2, 4, 6, 8]
 #Es el rango y va saltando conforme lo deseemos
+#Range 2
+my_range3 = range(1, 100, 10)
+>>> print(list(my_range3))
+[1, 11, 21, 31, 41, 51, 61, 71, 81, 91]
