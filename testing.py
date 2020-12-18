@@ -64,3 +64,20 @@ age.append(42)
 all_ages = [32, 41, 29] + age
 name_and_age = zip(first_names, all_ages)
 ids = range(4)
+#Index of list
+index4 = employees[4]
+#We can do this using the following syntax: letters[start:end], where:
+#start is the index of the first element that we want to include in our selection.
+#end is the index of one more than the last index that we want to include. 
+sublist = letters[1:6]
+print(sublist)
+#If we want to select the first 3 elements of a list
+fruits = ['apple', 'banana', 'cherry', 'date']
+>>> print(fruits[0:3])
+['apple', 'banana', 'cherry']
+#Counting elements in a list
+num_i = letters.count('i')
+print(num_i)
+#Sorting Lists I
+names.sort()
+print(names)
