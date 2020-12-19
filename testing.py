@@ -81,3 +81,8 @@ print(num_i)
 #Sorting Lists I
 names.sort()
 print(names)
+#sorted generated a new list its become after list
+names = ['Xander', 'Buffy', 'Angel', 'Willow', 'Giles']
+sorted_names = sorted(names)
+print(sorted_names)
+['Angel', 'Buffy', 'Giles', 'Willow', 'Xander']
