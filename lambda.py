@@ -14,10 +14,8 @@ print(add_two(-2))
 # 4. We are returning my_input plus 2 (with normal Python functions, we use the keyword return)
 # Example Let’s write a lambda function that checks if a string is a substring of the string “This is the master string”.
 # Code
-is_substring = lam
-grade >= 90
-#Otherwise, return 'Did not get an A...' if this statement is not true:
-#grade >= 90bda my_string: my_string in "This is the master string"
+is_substring = lambda my_string: my_string in "This is the master string"
+
 #The code
 print(is_substring('I'))
 print(is_substring('am'))
