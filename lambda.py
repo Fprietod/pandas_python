@@ -39,3 +39,15 @@ contains_a = lambda word:  'a' in word
 print contains_a("banana")
 #Function that calculate the len of a word and its neccesary to be hight than 12
 long_string  = lambda word: len(word) > 12
+#You can get a character of a string string_name by using the syntax string_name[index]
+#where index is the place of character you want to get, starting at 0.
+#Example
+my_string = "Whoa! A seesaw"
+print(my_string[0])
+#Create a lambda function named ends_in_a that takes an input str and returns True if the last character in the string is an a. Otherwise, return False
+ends_in_a = lambda word: 'a' in word[-1]
+#The last character in the string is string_name[-1].
+#As a reminder, to return different output depending on different input, we can use if and else inside our lambda function:
+add_or_subtract = lambda input_number: input_number - 1 if input_number >= 0 else input_number + 1
+#Another 
+double_or_zero = lambda num: num * 2 if num > 10 else 0
