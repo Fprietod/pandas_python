@@ -34,3 +34,8 @@ grade >= 90
 #Otherwise, return 'Did not get an A...' if this statement is not true:
 grade >= 90
 #Lambda functions only work if we’re just doing a one line command. If we wanted to something longer, we’d need a more complex function. Lambda functions are great when you need to use a function once.
+#Create a lambda function named contains_a that takes an input word and returns True
+contains_a = lambda word:  'a' in word
+print contains_a("banana")
+#Function that calculate the len of a word and its neccesary to be hight than 12
+long_string  = lambda word: len(word) > 12
