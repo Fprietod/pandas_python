@@ -88,5 +88,38 @@ with open('keats_sonnet.txt') as keats_sonnet:
   for line in keats_sonnet.readlines():
     print(line)
     #The above script creates a temporary file object called keats_sonnet that points to the file keats_sonnet.txt. It then iterates over each line in the document and prints the entire file out.
+    
+    #Reading Line
+    #Sometimes you don’t want to iterate through a whole file. For that, there’s a different file method, .readline(), which will only read a single line at a time.
+    with open('millay_sonnet.txt') as sonnet_doc:
+  first_line = sonnet_doc.readline()
+  second_line = sonnet_doc.readline()
+  print(second_line)
+  #It then reads in the first line using sonnet_doc.readline() and saves that to the variable first_line
+  #It then saves the second line (So make the most of this, your little day,) into the variable second_line and then prints it out. 
+  #Write file
+  with open('generated_file.txt', 'w') as gen_file:
+  gen_file.write("What an incredible file!")
+  #Here we pass the argument 'w' to open() in order to indicate to open the file in write-mode. 
+  #The default argument is 'r' and passing 'r' to open() opens the file in read-mode as we’ve been doing.
+  #This code creates a new file in the same folder as script.py and gives it the text What an incredible file!
+  #Appending to a File
+  #Of course there is! Instead of opening the file using the argument 'w' for write-mode, we open it with 'a' for append-mode.
+  #Then we can add another line to that file with the following code:
+  with open('generated_file.txt', 'a') as gen_file:
+  gen_file.write("... and it still is")
+  #Notice that opening the file in append-mode, with 'a' as an argument to open(), means that using the file object’s .write() method appends whatever is passed to the end of the file in a new line
+  # In Python we can convert that data into a dictionary using the csv library’s DictReader object. Read CSV
+  import csv
+ 
+list_of_email_addresses = []
+with open('users.csv', newline='') as users_csv:
+  user_reader = csv.DictReader(users_csv)
+  for row in user_reader:
+    list_of_email_addresses.append(row['Email'])
+# We then create the empty list list_of_email_addresses which we’ll later populate with the email addresses from our CSV. 
+#We pass the additional keyword argument newline='' to the file opening open() function so that we don’t accidentally mistake a line break in one of our data fields as a new row in our CSV 
+#After opening our new CSV file we use csv.DictReader(users_csv) which converts the lines of our CSV file to Python dictionaries which we can use access methods for.
+#The keys of the dictionary are, by default, the entries in the first line of our CSV file. Since our CSV’s first line calls the third field in our CSV “Email“, we can use that as the key in each row of our DictReader.
    
 
