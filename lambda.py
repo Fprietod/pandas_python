@@ -53,3 +53,40 @@ add_or_subtract = lambda input_number: input_number - 1 if input_number >= 0 els
 double_or_zero = lambda num: num * 2 if num > 10 else 0
 #Multiple
 multiple_of_three = lambda num: "multiple of three" if num %3 ==0 else 'not a multiple'
+# Comparisons can be done using:
+
+  #  <: less than
+   # <=: less than or equal to
+   # >: greater than
+   # >=: greater than or equal to
+   # ==: equal to
+   # !=: not equal to
+  
+  rate_movie = lambda rating: 'I liked this movie' if rating > 8.5 else 'This movie was not very good'
+  #You can use the modulo function (%) with 10 to find the ones’ place of an integer.
+  #Double square
+  #or by using the exponential operator **:
+  
+  #Add Random
+
+#random.randint(a,b) will return an integer between a and b (inclusive).
+
+#So, random.randint(5, 8) could return any integer between 5 and 8 including both 5 and 8.
+
+#random.randint(0, 100) could return any integer between 0 and 100 including both 0 and 100.
+add_random = lambda num: num + random.randint(1,10)
+
+#Open a file
+with open('real_cool_document.txt') as cool_doc:
+  cool_contents = cool_doc.read()
+print(cool_contents)
+
+#This opens a file object called cool_doc and creates a new indented block where you can read the contents of the opened file. We then read the contents of the file cool_doc using cool_doc.read() and save the resulting string into the variable cool_contents. Then we print cool_contents, which outputs the statement Wowsers!.
+# But what if we wanted to store each line in a variable? We can use the .readlines() 
+#function to read a text file line by line instead of having the whole thing
+with open('keats_sonnet.txt') as keats_sonnet:
+  for line in keats_sonnet.readlines():
+    print(line)
+    #The above script creates a temporary file object called keats_sonnet that points to the file keats_sonnet.txt. It then iterates over each line in the document and prints the entire file out.
+   
+
