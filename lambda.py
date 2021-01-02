@@ -51,3 +51,5 @@ ends_in_a = lambda word: 'a' in word[-1]
 add_or_subtract = lambda input_number: input_number - 1 if input_number >= 0 else input_number + 1
 #Another 
 double_or_zero = lambda num: num * 2 if num > 10 else 0
+#Multiple
+multiple_of_three = lambda num: "multiple of three" if num %3 ==0 else 'not a multiple'
