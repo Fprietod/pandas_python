@@ -121,5 +121,42 @@ with open('users.csv', newline='') as users_csv:
 #We pass the additional keyword argument newline='' to the file opening open() function so that we don’t accidentally mistake a line break in one of our data fields as a new row in our CSV 
 #After opening our new CSV file we use csv.DictReader(users_csv) which converts the lines of our CSV file to Python dictionaries which we can use access methods for.
 #The keys of the dictionary are, by default, the entries in the first line of our CSV file. Since our CSV’s first line calls the third field in our CSV “Email“, we can use that as the key in each row of our DictReader.
+#When we iterate through the rows of our user_reader object, we access all of the rows in our CSV as dictionaries (except for the first row, which we used to label the keys of our dictionary). 
+#By accessing the 'Email' key of each of these rows we can grab the email address in that row and append it to our list_of_email_addresses.
+import csv
+with open('cool_csv.csv') as cool_csv_file:
+  cool_csv_dict = csv.DictReader(cool_csv_file)
+  for row in cool_csv_dict:
+    print(row['Cool Fact'])
    
-
+  #Reading different type of cv
+  #Notice the \n character, this is the escape sequence for a new line.
+  #The possibility of a new line escaped by a \n character in our data is why we pass the newline='' keyword argument to the open() function.
+  import csv
+ 
+with open('addresses.csv', newline='') as addresses_csv:
+  address_reader = csv.DictReader(addresses_csv, delimiter=';')
+  for row in address_reader:
+    print(row['Address'])
+    
+   #Exercise create a list and get the ID number of every book
+   with open('books.csv') as books_csv:
+  books_reader = csv.DictReader(books_csv, delimiter='@')
+  isbn_list = [book['ISBN']for book in books_reader]
+  #Writing a CSV FILE
+  #First import the csv module
+  import csv
+  big_list = [{'name': 'Fredrick Stein', 'userid': 6712359021, 'is_admin': False}, {'name': 'Wiltmore Denis', 'userid': 2525942, 'is_admin': False}, {'name': 'Greely Plonk', 'userid': 15890235, 'is_admin': False}, {'name': 'Dendris Stulo', 'userid': 572189563, 'is_admin': True}]
+  
+  with open('output.csv', 'w') as output_csv:
+  fields = ['name', 'userid', 'is_admin']
+  output_writer = csv.DictWriter(output_csv, fieldnames=fields)
+ 
+  output_writer.writeheader()
+  for item in big_list:
+    output_writer.writerow(item)
+    
+  #In our code above we had a set of dictionaries with the same keys for each, a prime candidate for a CSV. We import the csv library, and then open a new CSV file in write-mode by passing the 'w' argument to the open() function. 
+  #  We then instantiate our CSV writer object and pass two arguments. The first is output_csv, the file handler object. The second is our list of fields fields which we pass to the keyword parameter fieldnames.
+#First we want the headers, so we call .writeheader() on the writer object. This writes all the fields passed to fieldnames as the first row in our file.
+#Then we iterate through our big_list of data. Each item in big_list is a dictionary with each field in fields as the keys.
