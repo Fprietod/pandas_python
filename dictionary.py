@@ -62,6 +62,18 @@ drinks = ["espresso", "chai", "decaf", "drip"]
 caffeine = [64, 40, 0, 120]
 zipped_drinks = zip(drinks,caffeine)
 drinks_to_caffeine = {key:value for key, value in zipped_drinks}
+#Exercise
+songs = ["Like a Rolling Stone", "Satisfaction", "Imagine", "What's Going On", "Respect", "Good Vibrations"]
+playcounts = [78, 29, 44, 21, 89, 5]
+
+plays = {song:playcount for [song, playcount] in zip(songs, playcounts)}
+
+plays["Respect"] = 94
+plays["Purple Haze"] = 1
+
+library = {"The Best Songs": plays, "Sunday Feelings": {}}
+
+print(library)
 
 
 
