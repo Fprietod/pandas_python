@@ -160,3 +160,26 @@ with open('addresses.csv', newline='') as addresses_csv:
   #  We then instantiate our CSV writer object and pass two arguments. The first is output_csv, the file handler object. The second is our list of fields fields which we pass to the keyword parameter fieldnames.
 #First we want the headers, so we call .writeheader() on the writer object. This writes all the fields passed to fieldnames as the first row in our file.
 #Then we iterate through our big_list of data. Each item in big_list is a dictionary with each field in fields as the keys.
+#Reading a JSON File
+import json
+ 
+with open('purchase_14781239.json') as purchase_json:
+  purchase_data = json.load(purchase_json)
+ 
+print(purchase_data['user'])
+
+#We continue by parsing purchase_json using json.load(), creating a Python dictionary out of the file. Saving the results into purchase_data means we can interact with it
+# WRITE JSON OBJECT
+turn_to_json = {
+  'eventId': 674189,
+  'dateTime': '2015-02-12T09:23:17.511Z',
+  'chocolate': 'Semi-sweet Dark',
+  'isTomatoAFruit': True
+}
+import json
+ 
+with open('output.json', 'w') as json_file:
+  json.dump(turn_to_json, json_file)
+  #We import the json module, open up a write-mode file under the variable json_file, and then use the json.dump() method to write to the file. 
+  #json.dump() takes two arguments: first the data object, then the file object you want to save.
+
