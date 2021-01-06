@@ -208,6 +208,11 @@ pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58
 for occupation, percentage in pct_women_in_occupation.items():
   print("Women make up " + str(percentage) + " percent of " + occupation + "s.") 
   
+ #Example
+ new_dict["new key"] = old_dict.pop("old key")
+ for key, value in spread.items():
+  print("Your "+key+" is the "+value+" card. ")
+  
 
 
 
