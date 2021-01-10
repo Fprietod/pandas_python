@@ -33,3 +33,17 @@ def graduation_reqs(gpa, credits):
     return "Your GPA is not high enough to graduate."
   if not (gpa >= 2.0) and not (credits >= 120):
     return "You do not meet either requirement to graduate!"
+  
+  #An elif statement checks another condition after the previous if statements conditions aren’t met.
+  #Example
+  def grade_converter(gpa):
+  if(gpa >= 4.0):
+    return 'A'
+  elif (gpa >=3.0):
+    return 'B'
+  elif(gpa >=2.0):
+    return 'C'
+  elif(gpa >=1.0):
+    return 'D'
+  else:
+    return 'F'
