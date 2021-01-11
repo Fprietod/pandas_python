@@ -341,6 +341,118 @@ class Admin(User):
     message.text = new_text
     
     #Owerite the function, for only Admin user can edit the message
+   
+ #Super()
+
+#super() gives us a proxy object. With this proxy object, we can invoke the method of an object’s parent class (also called its superclass). We call the required function as a method on super():
+class Sink:
+  def __init__(self, basin, nozzle):
+    self.basin = basin
+    self.nozzle = nozzle
+ 
+class KitchenSink(Sink):
+  def __init__(self, basin, nozzle, trash_compactor=None):
+    super().__init__(basin, nozzle)
+    if trash_compactor:
+      self.trash_compactor = trash_compactor
+
+ #Above we defined two classes. First, we defined a Sink class with a constructor that assigns a rinse basin and a sink nozzle to a Sink instance.
+#Afterwards, we defined a KitchenSink class that inherits from Sink. KitchenSink‘s constructor takes an additional parameter, a trash_compactor. 
+# In the example given, KitchenSink‘s constructor calls the constructor for Sink. In this way, we can override a parent class’s method to add some new functionality (like adding a trash_compactor to a sink)
+#KitchenSink then calls the constructor for Sink with the basin and nozzle it received using the super() function, with this line of code
+
+super().__init__(basin, nozzle)
+#Example
+class PotatoSalad:
+  def __init__(self, potatoes, celery, onions):
+    self.potatoes = potatoes
+    self.celery = celery
+    self.onions = onions
+    
+class SpecialPotatoSalad(PotatoSalad):
+  def __init__(self, potatoes, celery, onions):
+    super().__init__(potatoes, celery, onions)
+    self.raisins = 40
+    
+ #Interfaces
+
+#An interface in Python usually refers to the names of the methods and the arguments they take.
+#Other programming languages have more rigid definitions of what an interface is, but it usually hinges on the fact that different objects from different classes can perform the same operation
+class InsurancePolicy:
+  def __init__(self, price_of_item):
+    self.price_of_insured_item = price_of_item
+
+class VehicleInsurance(InsurancePolicy):
+  def get_rate(self):
+    return self.price_of_insured_item * .001
+  
+  
+
+class HomeInsurance(InsurancePolicy):
+  def get_rate(self):
+    return self.price_of_insured_item * .00005
+  
+  
+  #Polymorphism
+  
+  #Polymorphism is the term used to describe the same syntax (like the + operator here, but it could be a method name) doing different actions depending on the type of data.
+  a_list = [1, 18, 32, 12]
+a_dict = {'value': True}
+a_string = "Polymorphism is cool!"
+
+print(len(a_list))
+print(len(a_dict))
+print(len(a_string))
+
+
+#Methods
+class Color: 
+  def __add__(self, other):
+    """
+    Adds two RGB colors together
+    Maximum value is 255
+    """
+    new_red = min(self.red + other.red, 255)
+    new_green = min(self.green + other.green, 255)
+    new_blue = min(self.blue + other.blue, 255)
+ 
+    return Color(new_red, new_green, new_blue)
+
+
+
+#Example
+class Atom:
+  def __init__(self, label):
+    self.label = label
+    
+  def __add__(self, other):
+    return Molecule([self, other])
+    
+class Molecule:
+  def __init__(self, atoms):
+    if type(atoms) is list:
+	    self.atoms = atoms
+      
+sodium = Atom("Na")
+chlorine = Atom("Cl")
+salt = Molecule([sodium, chlorine])
+
+
+#####################################
+#Another example
+
+class LawFirm:
+  def __init__(self, practice, lawyers):
+    self.practice = practice
+    self.lawyers = lawyers
+    
+  def __len__(self):
+    return len(self.lawyers)
+  
+  def __contains__(self, lawyer):
+    return lawyer in self.lawyers
+    
+d_and_p = LawFirm("Injury", ["Donelli", "Paderewski"])
 
 
 
