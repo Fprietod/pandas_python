@@ -235,5 +235,112 @@ print(medium_pizza)
 print(teaching_table)
 print(round_room)
 
+# Inheritance
+
+#Think of inheritance as a remix — it sounds a lot like the original, but there’s something… different about it.
+class User:
+  is_admin = False
+  def __init__(self, username)
+    self.username = username
+ 
+class Admin(User):
+  is_admin = True
+  
+ #Above we defined User as our base class. We want to create a new class that inherits from it, so we created the subclass Admin
+#In the above example, Admin has the same constructor as User. Only the class variable is_admin is set differently between the two.
+
+
+#Exceptions
+
+#We can validate this ourselves using the issubclass() function. issubclass() is a Python built-in function that takes two parameters. issubclass() returns True
+#if the first argument is a subclass of the second argument. It returns False if the first class is not a subclass of the second. issubclass() raises a TypeError if either argument passed in is not a class.
+issubclass(ZeroDivisionError, Exception)
+# Returns True
+
+#Example
+
+class KitchenException(Exception):
+  """
+  Exception that gets thrown when a kitchen appliance isn't working
+  """
+ 
+class MicrowaveException(KitchenException):
+  """
+  Exception for when the microwave stops working
+  """
+ 
+class RefrigeratorException(KitchenException):
+  """
+  Exception for when the refrigerator stops working
+  """
+  
+  
+  def get_food_from_fridge():
+  if refrigerator.cooling == False:
+    raise RefrigeratorException
+  else:
+    return food
+ 
+def heat_food(food):
+  if microwave.working == False:
+    raise MicrowaveException
+  else:
+    microwave.cook(food)
+    return food
+ 
+try:
+  food = get_food_from_fridge()
+  food = heat_food(food)
+except KitchenException:
+  food = order_takeout()
+  
+  #Excercise 
+  
+  
+  class OutOfStock(Exception):
+  print ("you are fuck")
+  
+
+# Update the class below to raise OutOfStock
+class CandleShop:
+  name = "Here's a Hot Tip: Buy Drip Candles"
+  def __init__(self, stock):
+    self.stock = stock
+    
+  def buy(self, color):
+    if self.stock[color] < 1:
+      raise OutOfStock
+    self.stock[color] = self.stock[color] - 1
+
+    
+  #Have CandleShop raise your OutOfStock exception when CandleShop.buy() tries to buy a candle that’s out of stock.
+
+candle_shop = CandleShop({'blue': 6, 'red': 2, 'green': 0})
+candle_shop.buy('blue')
+
+#Overriding Methods
+
+#An overridden method is one that has a different definition from its parent class.
+#n Python, all we have to do to override a method definition is to offer a new definition for the method in our subclass. 
+class Message:
+  def __init__(self, sender, recipient, text):
+    self.sender = sender
+    self.recipient = recipient
+    self.text = text
+
+class User:
+  def __init__(self, username):
+    self.username = username
+    
+  def edit_message(self, message, new_text):
+    if message.sender == self.username:
+      message.text = new_text
+
+class Admin(User):
+  def edit_message(self, message, new_text):
+    message.text = new_text
+    
+    #Owerite the function, for only Admin user can edit the message
+
 
 
