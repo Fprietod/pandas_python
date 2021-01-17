@@ -158,3 +158,27 @@ messages = [user + " please follow me!" for user in usernames]
   #Repeats steps 1-4 for all of the strings in usernames
 #Now, messages contains these values:
 ["@coolguy35 please follow me!", "@kewldawg54 please follow me!", "@matchamom please follow me!"]
+
+#Being able to create lists with modified values is especially useful when working with numbers. Let’s say we have this list:
+my_upvotes = [192, 34, 22, 175, 75, 101, 97]
+#We want to add 100 to each value. We can accomplish this goal in one line:
+updated_upvotes = [vote_value + 100 for vote_value in my_upvotes]
+
+#This list comprehension:
+
+   # Takes a number in my_upvotes
+  #  Assigns that number to a variable called vote_value
+  #  Adds 100 to vote_value
+  #  Appends that sum to the new list updated_upvotes
+  #  Repeats steps 1-4 for all of the numbers in my_upvotes
+
+  #Now, updated_upvotes contains these values:
+  [292, 134, 122, 275, 175, 201, 197]
+  
+  # Convert celsius to farenghtfai
+  celsius = [0, 10, 15, 32, -5, 27, 3]
+fahrenheit = [ temperature_in_celsius * 9/5 + 32 for temperature_in_celsius in celsius ]
+
+print(fahrenheit)
+
+#Excercise
