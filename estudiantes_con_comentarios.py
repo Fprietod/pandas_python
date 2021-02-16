@@ -15,8 +15,8 @@
     #Inicia otra condición donde si, nuestra lista suma_id es menor
     #que 5, agregamos el valor que se encuentra en el ciclo de i
 
-    if i == index_lista: 
-      if len(suma_id) < 5:
+    if i == index_lista and index_lista <=1000: 
+      if len(suma_id) < 5 and j <=1000:
         suma_id.append(j)
     else:
       resultado.append([index_lista,sum(suma_valor) // len(suma_valor)])
@@ -26,4 +26,5 @@
       #Cuando tenemos una lista llena, procedmos a obtener el promedio para esto 
       #En este paso ya tenemos todos los estudiantes procesados, procede a guardarlo
 
-      return resultado
+       if resultado[0][1] <= 100:
+        return resultado
