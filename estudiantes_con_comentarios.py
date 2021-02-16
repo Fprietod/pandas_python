@@ -20,8 +20,8 @@
         suma_id.append(j)
     else:
       resultado.append([index_lista,sum(suma_valor) // len(suma_valor)])
-      suma_valor = (j)
-      index_lista =(i)
+      suma_valor = [j]
+      index_lista = i
       resultado = resultado[::-1]
       #Cuando tenemos una lista llena, procedmos a obtener el promedio para esto 
       #En este paso ya tenemos todos los estudiantes procesados, procede a guardarlo
