@@ -1,5 +1,3 @@
-from typing import List
-
 def average_students(items: List[List[int]]) -> List[List[int]]:
   items.sort(reverse = True)
   resultado = []
@@ -18,6 +16,7 @@ def average_students(items: List[List[int]]) -> List[List[int]]:
       resultado.append([index_lista,sum(suma_id) // len(suma_id)])
       suma_id = [j]
       index_lista = i
+      resultado = resultado[::-1]
      
      
 
