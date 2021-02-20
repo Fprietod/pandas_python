@@ -6,3 +6,22 @@ df1 = pd.DataFrame({
 })
 
 print(df1)
+
+# Create a Data Frame II
+df2 = pd.DataFrame([
+  [1, 'San Diego', 100],
+  [2, 'Los Angeles', 120],
+  [3, 'San Francisco', 90],
+  [4, 'Sacramento', 115]
+],
+  columns=['Store ID', 'Location', 'Number of Employees'
+    #add column names here
+  ])
+
+print(df2)
+
+# Inspect a Data Frame
+#load the CSV below:
+df = pd.read_csv('imdb.csv')
+#print(df.head())
+print(df.info())
