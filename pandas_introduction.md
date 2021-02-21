@@ -64,3 +64,15 @@ The method .head() gives the first 5 rows of a DataFrame. If you want to see mor
 
 The method df.info() gives some statistics for each column.
 ~~~
+### Select Columns
+~~~
+Now we know how to create and load data. Let’s select parts of those datasets that are interesting or important to our analyses.
+
+Suppose you have the DataFrame called customers, which contains the ages of your customers: 
+
+Perhaps you want to take the average or plot a histogram of the ages. In order to do either of these tasks, you’d need to select the column.
+
+There are two possible syntaxes for selecting all values from a column:
+~~~
+- Select the column as if you were selecting a value from a dictionary using a key. In our example, we would type customers['age'] to select the ages.
+-  If the name of a column follows all of the rules for a variable name (doesn’t start with a number, doesn’t contain spaces or special characters, etc.), then you          can select it using the following notation: df.MySecondColumn. In our example, we would type customers.age.
