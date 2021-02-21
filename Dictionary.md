@@ -316,3 +316,10 @@ Microsoft has a value of 80 billion dollars.
 Coca-Cola has a value of 69.7 billion dollars.
 Amazon has a value of 64.8 billion dollars.
 ```
+example
+```python
+pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58, "Physician": 40, "Lawyer": 37, "Aerospace Engineer": 9}
+
+for occupation, percentage in pct_women_in_occupation.items():
+  print("Women make up " + str(percentage) + " percent of " + occupation + "s.") 
+  ```
