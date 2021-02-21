@@ -124,11 +124,113 @@ Remember that zip() combines two lists into a zipped list of pairs. This list co
    - Creates a key : value item in the students dictionary
   -  Repeats steps 1-3 for the entire list of pairs
   
+  
  Example:
  ```python
  drinks = ["espresso", "chai", "decaf", "drip"]
 caffeine = [64, 40, 0, 120]
 zipped_drinks = zip(drinks,caffeine)
 drinks_to_caffeine = {key:value for key, value in zipped_drinks}
+```
+
+## Get A Key
+Once you have a dictionary, you can access the values in it by providing the key. For example, let’s imagine we have a dictionary that maps buildings to their heights, in meters:
+```python
+building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}
+```
+Then we can access the data in it like this:
+```shell
+>>> building_heights["Burj Khalifa"]
+828
+>>> building_heights["Ping An"]
+599
+```
+### Get an Invalid Key
+One way to avoid this error is to first check if the key exists in the dictionary:
+```python
+key_to_check = "Landmark 81"
+ 
+if key_to_check in building_heights:
+  print(building_heights["Landmark 81"])
+  ```
+### Try/Except to Get a Key
+We saw that we can avoid KeyErrors by checking if a key is in a dictionary first. Another method we could use is a try/except:
+```python
+key_to_check = "Landmark 81"
+try:
+  print(building_heights[key_to_check])
+except KeyError:
+  print("That key doesn't exist!")
+  ```
+When we try to access a key that doesn’t exist, the program will go into the except block and print "That key doesn't exist!".
+```python
+caffeine_level['matcha'] = 30
+
+try:
+  print(caffeine_level['matcha'])
+except KeyError:
+  print("Unknown Caffeine Level")
+  ```
+### Safely Get a Key
+Dictionaries have a .get() method to search for a value instead of the my_dict[key] notation we have been using. If the key you are trying to .get() does not exist, it will return None by default:
+```python
+building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}
+ 
+#this line will return 632:
+building_heights.get("Shanghai Tower")
+ 
+#this line will return None:
+building_heights.get("My House")
+```
+You can also specify a value to return if the key doesn’t exist. For example, we might want to return a building height of 0 if our desired building is not in the dictionary:
+```shell
+>>> building_heights.get('Shanghai Tower', 0)
+632
+>>> building_heights.get('Mt Olympus', 0)
+0
+>>> building_heights.get('Kilimanjaro', 'No Value')
+'No Value'
+```
+Example
+```python
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
+
+tc_id = user_ids.get("teraCoder",100000)
+print (tc_id)
+
+stack_id = user_ids.get("superStackSmash",100000)
+```
+### Delete a Key
+Sometimes we want to get a key and remove it from the dictionary. Imagine we were running a raffle, and we have this dictionary mapping ticket numbers to prizes:
+```python
+raffle = {223842: "Teddy Bear", 872921: "Concert Tickets", 320291: "Gift Basket", 412123: "Necklace", 298787: "Pasta Maker"}
+```
+
+When we get a ticket number, we want to return the prize and also remove that pair from the dictionary, since the prize has been given away. We can use .pop() to do this. Just like with .get(), we can provide a default value to return if the key does not exist in the dictionary:
+```python
+>>> raffle.pop(320291, "No Prize")
+"Gift Basket"
+>>> raffle
+{223842: "Teddy Bear", 872921: "Concert Tickets", 412123: "Necklace", 298787: "Pasta Maker"}
+>>> raffle.pop(100000, "No Prize")
+"No Prize"
+>>> raffle
+{223842: "Teddy Bear", 872921: "Concert Tickets", 412123: "Necklace", 298787: "Pasta Maker"}
+>>> raffle.pop(872921, "No Prize")
+"Concert Tickets"
+>>> raffle
+{223842: "Teddy Bear", 412123: "Necklace", 298787: "Pasta Maker"}
+```
+.pop() works to delete items from a dictionary, when you know the key value.
+```python
+available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}
+health_points = 20
+
+health_points += available_items.pop("stamina grains", 0)
+health_points += available_items.pop("power stew", 0)
+health_points += available_items.pop("mystic bread", 0)
+
+print(available_items)
+print(health_points)
 ```
 
