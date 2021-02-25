@@ -197,5 +197,30 @@ dir(fun_list)
 ```
 Above we define a new list. We check it’s type and see that’s an instantiation of class list. We use dir() to explore its attributes, and it gives us a large number of internal Python dunder attributes, but, afterward, we get the usual list methods.
 
+#Example
+```python
+lass Student():
+  def __init__(self,name,year):
+    self.name = name
+    self.year = year
+    self.grades = []
+  def add_grade(self,grade):
+    if type(grade) is Grade:
+      
+      self.grades.append(grade)
+
+roger = Student("Roger van der Weyden",10)
+sandro = Student("Sandro Botticelli",12)
+pieter = Student("Pieter Bruegel the Elder",8)
+
+class Grade():
+  minimum_passing = 65
+  def __init__(self,score):
+    self.score = score
+
+
+pieter.add_grade(Grade(100))
+```
+
 
 
