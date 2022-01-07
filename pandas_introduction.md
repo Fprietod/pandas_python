@@ -270,3 +270,33 @@ df[(df.age < 30) |
 print(march_april)
 ```
 In Python, | means “or” and & means “and”.
+
+### Select rows with logic III
+
+Suppose we want to select the rows where the customer’s name is either “Martha Jones”, “Rose Tyler” or “Amy Pond”.
+
+We could use the isin command to check that df.name is one of a list of values:
+```python
+df[df.name.isin(['Martha Jones',
+     'Rose Tyler',
+     'Amy Pond'])]
+# Excersise
+
+january_february_march = df[df.month.isin(['January','February','March'])]
+
+print(january_february_march)
+
+```
+
+### Setting indices
+
+When we select a subset of a DataFrame using logic, we end up with non-consecutive indices. This is inelegant and makes it hard to use .iloc().
+
+We can fix this using the method .reset_index(). For example, here is a DataFrame called df with non-consecutive indices:
+
+| First Name   | Last Name  |   
+|---|---|---|---|---| ---------|
+| 0	John	|Smith
+|4	Jane|	|Doe|
+|7	Joe	Schmo  |          |   
+
