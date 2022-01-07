@@ -260,9 +260,13 @@ For instance, suppose we wanted to select all rows where the customer’s age wa
 …		
 
 
-´´´python
+```python 
 
 df[(df.age < 30) |
    (df.name == 'Martha Jones')]
+   
+   march_april = df[(df.month == 'March')| (df.month == 'April')]
+
+print(march_april)
 ```
 In Python, | means “or” and & means “and”.
