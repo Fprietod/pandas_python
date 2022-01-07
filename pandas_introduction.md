@@ -300,3 +300,64 @@ We can fix this using the method .reset_index(). For example, here is a DataFram
 |4	Jane|	|Doe|
 |7	Joe	Schmo  |          |   
 
+If we use the command 
+```python 
+df.reset_index()
+``` 
+we get a new DataFrame with a new set of indices:
+Note that the old indices have been moved into a new column called 'index'. Unless you need those values for something special, it’s probably better to use the keyword drop=True so that you don’t end up with that extra column. If we run the command df.reset_index(drop=True), we get a new DataFrame that looks like this:
+Using
+```python
+reset_index() 
+```
+will return a new DataFrame, but we usually just want to modify our existing DataFrame. If we use the keyword inplace=True we can just modify our existing DataFrame.
+
+#Excercise 
+
+Review
+You’ve completed the lesson! You’ve just learned the basics of working with a single table in Pandas, including:
+
+Create a table from scratch
+Loading data from another file
+Selecting certain rows or columns of a table
+Let’s practice what you’ve learned.
+
+1. In this example, you’ll be the data analyst for ShoeFly.com, a fictional online shoe store. You’ve seen this data; now it’s your turn to work with it!
+
+Load the data from shoefly.csv into the variable orders.
+
+2.Inspect the first 5 lines of the data.
+
+3.Your marketing department wants to send out an email blast to everyone who ordered shoes!
+
+Select all of the email addresses from the column email and save them to a variable called emails.
+
+4.
+Frances Palmer claims that her order was wrong. What did Frances Palmer order?
+
+Use logic to select that row of orders and save it to the variable frances_palmer.
+
+
+5.
+We need some customer reviews for our comfortable shoes. Select all orders for shoe_type: clogs, boots, and ballet flats and save them to the variable comfy_shoes.
+
+```python
+
+#Part 1: reading the csv
+orders = pd.read_csv('shoefly.csv')
+
+#Part 2: inspecting the first five lines of data
+print(orders.head(5))
+
+#Part 3: selecting the column 'email'
+emails = orders.email
+
+#Part 4: the Frances Palmer incident
+frances_palmer = orders[(orders.first_name == 'Frances') & (orders.last_name == 'Palmer')]
+
+#Part 5: Comfy feet means more time on the street
+comfy_shoes = orders[orders.shoe_type.isin(['clogs', 'boots', 'ballet flats'])]
+
+
+
+
