@@ -91,6 +91,7 @@ df = pd.DataFrame([
            'clinic_west']
         
 )
+´´´python
 clinic_north = df['clinic_north']
 print(type(clinic_north))
 print(type(df))
