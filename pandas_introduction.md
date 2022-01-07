@@ -251,12 +251,12 @@ You can also combine multiple logical statements, as long as each statement is i
 
 For instance, suppose we wanted to select all rows where the customer’s age was under 30 or the customer’s name was “Martha Jones”:
 
-name	address	phone	age
-Martha Jones	123 Main St.	234-567-8910	28
-Rose Tyler	456 Maple Ave.	212-867-5309	22
-Donna Noble	789 Broadway	949-123-4567	35
-Amy Pond	98 West End Ave.	646-555-1234	29
-Clara Oswald	54 Columbus Ave.	714-225-1957	31
+|name|	|address|	|phone|	|age|
+|Martha Jones	123 Main St.	234-567-8910	28|
+|Rose Tyler	456 Maple Ave.	212-867-5309	22|
+|Donna Noble	789 Broadway	949-123-4567	35|
+|Amy Pond	98 West End Ave.	646-555-1234	29|
+|Clara Oswald	54 Columbus Ave.	714-225-1957	31|
 …		
 
 
