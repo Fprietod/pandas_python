@@ -357,6 +357,183 @@ frances_palmer = orders[(orders.first_name == 'Frances') & (orders.last_name == 
 
 #Part 5: Comfy feet means more time on the street
 comfy_shoes = orders[orders.shoe_type.isin(['clogs', 'boots', 'ballet flats'])]
+```
+## Modifying DataFrames
+
+In the previous lesson, you learned what a DataFrame is and how to select subsets of data from one.
+
+In this lesson, you’ll learn how to modify an existing DataFrame. Some of the skills you’ll learn include:
+
+Adding columns to a DataFrame
+Using lambda functions to calculate complex quantities
+Renaming columns
+
+### Adding a Column I
+
+Sometimes, we want to add a column to an existing DataFrame. We might want to add new information or perform a calculation based on the data that we already have.
+
+One way that we can add a new column is by giving a list of the same length as the existing DataFrame.
+
+Suppose we own a hardware store called The Handy Woman and have a DataFrame containing inventory information:
+It looks like the actual quantity of each product in our warehouse is missing!
+
+Let’s use the following code to add that information to our DataFrame.
+```python
+df['Quantity'] = [100, 150, 50, 35]
+```
+
+Excercise 
+```python
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add columns here
+df['Sold in Bulk?'] = ['Yes','Yes','No','No']
+
+```
+### Adding a Column II
+We can also add a new column that is the same for all rows in the DataFrame
+Suppose we know that all of our products are currently in-stock. We can add a column that says this:
+```python
+df['In Stock?'] = True
+```
+
+###Adding a Column III
+Finally, you can add a new column by performing a function on the existing columns.
+
+Maybe we want to add a column to our inventory table with the amount of sales tax that we need to charge for each item. The following code multiplies each Price by 0.075, the sales tax for our state:
+```python
+df['Sales Tax'] = df.Price * 0.075
+```
+Excerise add the diference 
+```python 
+df = pd.DataFrame([
+  [1, '3 inch screw', 0.5, 0.75],
+  [2, '2 inch nail', 0.10, 0.25],
+  [3, 'hammer', 3.00, 5.50],
+  [4, 'screwdriver', 2.50, 3.00]
+],
+  columns=['Product ID', 'Description', 'Cost to Manufacture', 'Price']
+)
+
+# Add column here
+df['Margin'] = df.Price - df['Cost to Manufacture']
+print(df)
+```
+## Performing Column Operations
+
+It’s a little annoying that the capitalization is different for each row. Perhaps we’d like to make it more consistent by making all of the letters uppercase.
+
+We can use the apply function to apply a function to every value in a particular column. For example, this code overwrites the existing 'Name' columns by applying the function upper to every row in 'Name'.
+
+```python
+df['Name'] = df.Name.apply(str.upper)
+```
+Exercise 
+```python 
+df = pd.DataFrame([
+  ['JOHN SMITH', 'john.smith@gmail.com'],
+  ['Jane Doe', 'jdoe@yahoo.com'],
+  ['joe schmo', 'joeschmo@hotmail.com']
+],
+columns=['Name', 'Email'])
+
+# Add columns here
+df['Lowercase Name']= df.Name.apply(str.lower)
+
+print(df)
+```
+##Reviewing Lambda Function
+A lambda function is a way of defining a function in a single line of code. Usually, we would assign them to a variable.
+
+For example, the following lambda function multiplies a number by 2 and then adds 3:
+```python
+mylambda = lambda x: (x * 2) + 3
+print(mylambda(5))
+```
+
+Lambda functions work with all types of variables, not just integers! Here is an example that takes in a string, assigns it to the temporary variable x, and then converts it into lowercase:
+```python
+stringlambda = lambda x: x.lower()
+print(stringlambda("Oh Hi Mark!"))
+```
+
+Create a lambda function mylambda that returns the first and last letters of a string, assuming the string is at least 2 characters long. For example,
+```python 
+mylambda = lambda x: x[0]+x[-1]
+print(mylambda('Hello World'))
+```
+
+##Reviewing Lambda Function: If Statements
+We can make our lambdas more complex by using a modified form of an if statement.
+
+Suppose we want to pay workers time-and-a-half for overtime (any work above 40 hours per week). The following function will convert the number of hours into time-and-a-half hours using an if statement:
+
+```python
+def myfunction(x):
+    if x > 40:
+        return 40 + (x - 40) * 1.50
+    else:
+        return x
+ ```
+ Below is a lambda function that does the same thing:
+
+ ```python
+myfunction = lambda x: 40 + (x - 40) * 1.50 if x > 40 else x
+```
+In general, the syntax for an if function in a lambda function is:
+```python
+lambda x: [OUTCOME IF TRUE] if [CONDITIONAL] else [OUTCOME IF FALSE]
+``` 
+Exercise 
+
+You are managing the webpage of a somewhat violent video game and you want to check that each user’s age is 13 or greater when they visit the site.
+
+Write a lambda function that takes an inputted age and either returns Welcome to BattleCity! if the user is 13 or older or You must be over 13 if they are younger than 13. Your lambda function should be called mylambda.
+
+```python 
+mylambda = lambda x: 'Welcome to BattleCity!' if x>= 13 else "You must be over 13"
+print(mylambda(13))
+```
+
+## Applying a Lambda to a Column
+In Pandas, we often use lambda functions to perform complex operations on columns. For example, suppose that we want to create a column containing the email provider for each email address in the following table:
+
+We could use the following code with a lambda function and the string method .split():
+```python 
+df['Email Provider'] = df.Email.apply(
+    lambda x: x.split('@')[-1]
+    )
+ ```
+ Exercise 
+ 
+ Create a lambda function get_last_name which takes a string with someone’s first and last name (i.e., John Smith), and returns just the last name (i.e., Smith).
+ The DataFrame df represents the hours worked by different employees over the course of the week. It contains the following columns:
+
+'name': The employee’s name
+'hourly_wage': The employee’s hourly wage
+'hours_worked': The number of hours worked this week
+Use the lambda function get_last_name to create a new column last_name with only the employees’ last name.
+
+```python
+import pandas as pd
+
+df = pd.read_csv('employees.csv')
+
+# Add columns here
+get_last_name = lambda x: x.split()[-1]
+df['last_name'] = df.name.apply(get_last_name)
+
+print(df)
+```
+
+
 
 
 
