@@ -532,7 +532,113 @@ df['last_name'] = df.name.apply(get_last_name)
 
 print(df)
 ```
+### Applying a Lambda to a Row
+We can also operate on multiple columns at once. If we use apply without specifying a single column and add the argument axis=1, the input to our lambda function will be an entire row, not a column. To access particular values of the row, we use the syntax row.column_name or row[‘column_name’].
 
+If we want to add in the price with tax for each line, we’ll need to look at two columns: Price and Is taxed?.
+
+If Is taxed? is Yes, then we’ll want to multiply Price by 1.075 (for 7.5% sales tax).
+
+If Is taxed? is No, we’ll just have Price without multiplying it.
+
+We can create this column using a lambda function and the keyword axis=1:
+```python 
+df['Price with Tax'] = df.apply(lambda row:
+     row['Price'] * 1.075
+     if row['Is taxed?'] == 'Yes'
+     else row['Price'],
+     axis=1
+)
+```
+Excercise 
+If an employee worked for more than 40 hours, she needs to be paid overtime (1.5 times the normal hourly wage).
+
+For instance, if an employee worked for 43 hours and made $10/hour, she would receive $400 for the first 40 hours that she worked, and an additional $45 for the 3 hours of overtime, for a total for $445.
+
+Create a lambda function total_earned that accepts an input row with keys hours_worked and hourly_wage and uses an if statement to calculate the hourly wage.
+```python 
+df = pd.read_csv('employees.csv')
+print (df)
+ 
+total_earned = lambda row: (row.hourly_wage * 40) + ((row.hourly_wage * 1.5)* (row.hours_worked - 40))  \
+if row.hours_worked > 40 \
+else row.hourly_wage * row.hours_worked 
+df['total_earned'] = df.apply(total_earned, axis = 1)
+print(df)
+```
+## Renaming Columns
+
+When we get our data from other sources, we often want to change the column names. For example, we might want all of the column names to follow variable name rules, so that we can use df.column_name (which tab-completes) rather than df['column_name'] (which takes up extra space).
+
+You can change all of the column names at once by setting the .columns property to a different list. This is great when you need to change all of the column names at once, but be careful! You can easily mislabel columns if you get the ordering wrong. Here’s an example:
+```python 
+df = pd.DataFrame({
+    'name': ['John', 'Jane', 'Sue', 'Fred'],
+    'age': [23, 29, 21, 18]
+})
+df.columns = ['First Name', 'Age']
+```
+### Renaming Columns II
+You also can rename individual columns by using the .rename method. Pass a dictionary like the one below to the columns keyword argument:
+```bash 
+{'old_column_name1': 'new_column_name1', 'old_column_name2': 'new_column_name2'}
+```
+This is the code 
+```python 
+df.rename(columns={
+    'name': 'First Name',
+    'age': 'Age'},
+    inplace=True)
+```
+
+The code above will rename name to First Name and age to Age.
+
+Using rename with only the columns keyword will create a new DataFrame, leaving your original DataFrame unchanged. That’s why we also passed in the keyword argument inplace=True. Using inplace=True lets us edit the original DataFrame.
+
+There are several reasons why .rename is preferable to .columns:
+
+You can rename just one column
+You can be specific about which column names are getting changed (with .column you can accidentally switch column names if you’re not careful)
+Note: If you misspell one of the original column names, this command won’t fail. It just won’t change anything.
+
+If we didn’t know that df was a table of movie ratings, the column name might be confusing.
+
+To clarify, let’s rename name to movie_title.
+
+Use the keyword inplace=True so that you modify df rather than creating a new DataFrame!
+
+```python 
+df = pd.read_csv('imdb.csv')
+
+df.rename(columns = {'name': 'movie_title'}, inplace = True)
+
+print(df)
+```
+
+Excercise 
+1 Parte Once more, you’ll be the data analyst for ShoeFly.com, a fictional online shoe store.
+
+More messy order data has been loaded into the variable orders. Examine the first 5 rows of the data using print and head.
+
+
+2. Many of our customers want to buy vegan shoes (shoes made from materials that do not come from animals). Add a new column called shoe_source, which is vegan if the materials is not leather and animal otherwise.
+
+Our marketing department wants to send out an email to each customer. Using the columns last_name and gender create a column called salutation which contains Dear Mr. <last_name> for men and Dear Ms. <last_name> for women.
+
+Code 
+```python
+orders = pd.read_csv('shoefly.csv')
+# 1 parte
+print(orders.head(5))
+# 2 parte
+orders['shoe_source'] = orders.shoe_material.apply(lambda x: \
+                        	'animal' if x == 'leather'else 'vegan')
+# 3 parte
+orders['salutation'] = orders.apply(lambda row: \
+                                    'Dear Mr. ' + row['last_name']
+                                    if row['gender'] == 'male'
+                                    else 'Dear Ms. ' + row['last_name'],
+                                    axis=1)
 
 
 
