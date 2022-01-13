@@ -305,5 +305,70 @@ print(shoe_counts)
 print(shoe_counts_pivot)
 ```
 
-  
+ Excercise 
+ .
+Let’s examine some more data from ShoeFly.com. This time, we’ll be looking at data about user visits to the website (the same dataset that you saw in the introduction to this lesson).
+
+The data is a DataFrame called user_visits. Use print and head() to examine the first few rows of the DataFrame.
+Checkpoint 2 Passed
+
+Stuck? Get a hint
+
+2.
+The column utm_source contains information about how users got to ShoeFly’s homepage. For instance, if utm_source = Facebook, then the user came to ShoeFly by clicking on an ad on Facebook.com.
+
+Use a groupby statement to calculate how many visits came from each of the different sources. Save your answer to the variable click_source.
+
+Remember to use reset_index()!
+Checkpoint 3 Passed
+
+Hint
+
+Remember that count is a good way to find out how many rows have the same value for a given column. You can apply count to any column and it will give the same result.
+
+For instance, if we were grouping by month and wanted to count visits per month, we could use:
+
+user_visits.groupby('month').id.count()\
+           .reset_index()
+3.
+Paste the following code into script.py so that you can see the results of your previous groupby:
+
+print(click_source)
+Checkpoint 4 Passed
+4.
+Our Marketing department thinks that the traffic to our site has been changing over the past few months. Use groupby to calculate the number of visits to our site from each utm_source for each month. Save your answer to the variable click_source_by_month.
+Checkpoint 5 Passed
+
+Hint
+
+You’ll need to group by both month and utm_source.
+5.
+The head of Marketing is complaining that this table is hard to read. Use pivot to create a pivot table where the rows are utm_source and the columns are month. Save your results to the variable click_source_by_month_pivot.
+
+It should look something like this:
+
+
+6.
+View your pivot table by pasting the following code into script.py:
+
+print(click_source_by_month_pivot)
+Checkpoint 7 Passed
+
+```python
+user_visits = pd.read_csv('page_visits.csv')
+print(user_visits.head(5))
+
+click_source = user_visits.groupby('utm_source').id.count().reset_index()
+print(click_source)
+
+click_source_by_month = user_visits.groupby(['utm_source','month']).id.count().reset_index()
+
+click_source_by_month_pivot = click_source_by_month.pivot(
+   columns = 'month',
+  index = 'utm_source',
+  values = 'id'
+).reset_index()
+
+print(click_source_by_month_pivot)
+```
 
